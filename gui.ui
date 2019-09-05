@@ -59,7 +59,7 @@
     <string>Encrypt</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="refresh_button">
    <property name="geometry">
     <rect>
      <x>602</x>
@@ -69,7 +69,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Change Key</string>
+    <string>Refresh Cypher</string>
    </property>
   </widget>
  </widget>

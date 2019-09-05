@@ -10,7 +10,6 @@ key = pd.DataFrame(characters)
 cyphers = [key]
 
 def cypher():
-    # cyphers = [key] may need to do this to clean the cypher list before making new cyphers. could aslo just clean in the method for that btn
     for i in range(1,8): # make a list of 7 cyphers (one for each licence plate character by randomly arranging characters A-9
         cyphers.append(key)
         cyphers[i]['Values'] = np.random.random_sample(len(cyphers[0]))
@@ -24,8 +23,10 @@ class Ui(QtWidgets.QDialog):
         super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('gui.ui', self) # Load the .ui file
 
-        self.button = self.findChild(QtWidgets.QPushButton, 'encrypt_button')
-        self.button.clicked.connect(self.encrypt) # Remember to pass the definition/method, not the return value!
+        self.encrypt_button = self.findChild(QtWidgets.QPushButton, 'encrypt_button')
+        self.encrypt_button.clicked.connect(self.encrypt) # Remember to pass the definition/method, not the return value!
+        self.refresh_button = self.findChild(QtWidgets.QPushButton, 'refresh_button')
+        self.refresh_button.clicked.connect(self.refresh)
 
         self.input = self.findChild(QtWidgets.QTextEdit, 'plate_no_box')
 
@@ -48,6 +49,12 @@ class Ui(QtWidgets.QDialog):
         for r in result_list:
             output = output + ''.join(r) + '\n'
         self.output.setText(output)
+
+    def refresh(self):
+        cyphers = [key]
+        cypher()
+        self.output.setText('')
+        self.input.setText('')
 
 app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
 window = Ui() # Create an instance of our class
