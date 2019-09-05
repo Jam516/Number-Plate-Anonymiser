@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from PyQt5 import QtWidgets, uic
 
-qtCreatorFile = "gui.ui" # Enter file here.
+qtCreatorFile = "gui.ui" # Enter xml file here.
 characters  = {'Chr': ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
                'R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']}
 key = pd.DataFrame(characters)
@@ -15,7 +15,7 @@ def cypher():
         cyphers.append(key)
         cyphers[i]['Values'] = np.random.random_sample(len(cyphers[0]))
         cyphers[i] = cyphers[i].sort_values('Values')
-        cyphers[i] = cyphers[i].reset_index(drop=True) #this will be a method in the app that'll be called whenever we need to refresh ecryption
+        cyphers[i] = cyphers[i].reset_index(drop=True)
 
 cypher()
 
@@ -34,15 +34,20 @@ class Ui(QtWidgets.QDialog):
         self.show() # Show the GUI
 
     def encrypt(self):
-        # cypher()
         plate_no = self.input.toPlainText()
-        chrlist = list(plate_no)
-        for i in range(0,7):
-            index = cyphers[0].index[cyphers[0]['Chr'] == chrlist[i]] # get index of the plate no character in A-9 range
-            index = index[0]
-            chrlist[i] = cyphers[i+1].at[index, 'Chr'] # replace character in plate no with corresponding character in corresponding cypher
-        new_no = ''.join(chrlist)
-        self.output.setText(new_no)
+        no_list = plate_no.splitlines()
+        result_list = []
+        output = ''
+        for no in no_list:
+            chrlist = list(no)
+            for i in range(0,7):
+                index = cyphers[0].index[cyphers[0]['Chr'] == chrlist[i]] # get index of the plate no character in A-9 range
+                index = index[0]
+                chrlist[i] = cyphers[i+1].at[index, 'Chr'] # replace character in plate no with corresponding character in corresponding cypher
+            result_list.append(chrlist)
+        for r in result_list:
+            output = output + ''.join(r) + '\n'
+        self.output.setText(output)
 
 app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
 window = Ui() # Create an instance of our class
