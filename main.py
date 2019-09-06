@@ -3,6 +3,19 @@ import pandas as pd
 import numpy as np
 from PyQt5 import QtWidgets, uic
 
+# ////////////////////////////////////////////////////////////////
+# Define function to import external files when using PyInstaller.
+# ////////////////////////////////////////////////////////////////
+# def resource_path(relative_path):
+#     """ Get absolute path to resource, works for dev and for PyInstaller """
+#     try:
+#         # PyInstaller creates a temp folder and stores path in _MEIPASS
+#         base_path = sys._MEI14482
+#     except Exception:
+#         base_path = os.path.abspath(".")
+
+#     return os.path.join(base_path, relative_path)
+
 qtCreatorFile = "gui.ui" # Enter xml file here.
 characters  = {'Chr': ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
                'R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']}
@@ -20,8 +33,13 @@ cypher()
 
 class Ui(QtWidgets.QDialog):
     def __init__(self):
-        super(Ui, self).__init__() # Call the inherited classes __init__ method
+        super(Ui, self).__init__() # Call the inherited classes __init__ method 
         uic.loadUi('gui.ui', self) # Load the .ui file
+        # //////////////////////////////////////////
+        # Load the .ui file when using PyInstaller
+        # //////////////////////////////////////////
+        # interface = resource_path("gui.ui")
+        # uic.loadUi(interface, self)
 
         self.encrypt_button = self.findChild(QtWidgets.QPushButton, 'encrypt_button')
         self.encrypt_button.clicked.connect(self.encrypt) # Remember to pass the definition/method, not the return value!
