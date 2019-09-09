@@ -1,7 +1,9 @@
 import sys
 import pandas as pd
 import numpy as np
+import tkinter
 from PyQt5 import QtWidgets, uic
+from tkinter import messagebox
 
 # ////////////////////////////////////////////////////////////////
 # Define function to import external files when using PyInstaller.
@@ -30,6 +32,10 @@ def cypher():
         cyphers[i] = cyphers[i].reset_index(drop=True)
 
 cypher()
+
+parent = tkinter.Tk() 
+parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
+parent.withdraw() # Hide the window 
 
 class Ui(QtWidgets.QDialog):
     def __init__(self):
@@ -69,13 +75,15 @@ class Ui(QtWidgets.QDialog):
                 output = output + ''.join(r) + '\n'
             self.output.setText(output)
         except IndexError:
-            self.output.setText('Please enter a set of 7 character number plates e.g. \nBD51SMR \n6TGZ044 \nOR68ASM ')
+            self.output.setText('Please enter a set of 7 character number plates without spaces e.g. \nBD51SMR \n6TGZ044 \nOR68ASM ')
 
     def refresh(self):
-        cyphers = [key]
-        cypher()
-        self.output.setText('')
-        self.input.setText('')
+        okcancel = messagebox.askokcancel('Refresh Cypher', 'Are you sure you want to refresh the cypher?', parent=parent) # OK / Cancel
+        if okcancel:
+            cyphers = [key]
+            cypher()
+            self.output.setText('')
+            self.input.setText('')
 
 app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
 window = Ui() # Create an instance of our class
