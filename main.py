@@ -2,6 +2,7 @@ import sys
 import pandas as pd
 import numpy as np
 import tkinter
+import pickle
 from PyQt5 import QtWidgets, uic
 from tkinter import messagebox
 
@@ -22,16 +23,24 @@ qtCreatorFile = "gui.ui" # Enter xml file here.
 characters  = {'Chr': ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q',
                'R','S','T','U','V','W','X','Y','Z','0','1','2','3','4','5','6','7','8','9']}
 key = pd.DataFrame(characters)
+
 cyphers = [key]
 
 def cypher():
-    for i in range(1,8): # make a list of 7 cyphers (one for each licence plate character by randomly arranging characters A-9
-        cyphers.append(key)
-        cyphers[i]['Values'] = np.random.random_sample(len(cyphers[0]))
-        cyphers[i] = cyphers[i].sort_values('Values')
-        cyphers[i] = cyphers[i].reset_index(drop=True)
+        for i in range(1,8): # make a list of 7 cyphers (one for each licence plate character by randomly arranging characters A-9
+            cyphers.append(key)
+            cyphers[i]['Values'] = np.random.random_sample(len(cyphers[0]))
+            cyphers[i] = cyphers[i].sort_values('Values')
+            cyphers[i] = cyphers[i].reset_index(drop=True)
 
-cypher()
+try:
+    with open("cyphers.bin", "rb") as data:
+        cyphers = pickle.load(data)
+except FileNotFoundError:
+    cypher()
+
+    with open("cyphers.bin", "wb") as output:
+        pickle.dump(cyphers, output)
 
 parent = tkinter.Tk() 
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
