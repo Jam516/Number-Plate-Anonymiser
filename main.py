@@ -42,13 +42,13 @@ except FileNotFoundError:
     with open("cyphers.bin", "wb") as output:
         pickle.dump(cyphers, output)
 
-parent = tkinter.Tk() 
+parent = tkinter.Tk()
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
-parent.withdraw() # Hide the window 
+parent.withdraw() # Hide the window
 
 class Ui(QtWidgets.QDialog):
     def __init__(self):
-        super(Ui, self).__init__() # Call the inherited classes __init__ method 
+        super(Ui, self).__init__() # Call the inherited classes __init__ method
         uic.loadUi('gui.ui', self) # Load the .ui file
         # //////////////////////////////////////////
         # Load the .ui file when using PyInstaller
@@ -74,12 +74,13 @@ class Ui(QtWidgets.QDialog):
             result_list = []
             output = ''
             for no in no_list:
-                chrlist = list(no)
-                for i in range(0,7):
-                    index = cyphers[0].index[cyphers[0]['Chr'] == chrlist[i]] # get index of the plate no character in A-9 range
-                    index = index[0]
-                    chrlist[i] = cyphers[i+1].at[index, 'Chr'] # replace character in plate no with corresponding character in corresponding cypher
-                result_list.append(chrlist)
+                if no != '':
+                    chrlist = list(no)
+                    for i in range(0,7):
+                        index = cyphers[0].index[cyphers[0]['Chr'] == chrlist[i]] # get index of the plate no character in A-9 range
+                        index = index[0]
+                        chrlist[i] = cyphers[i+1].at[index, 'Chr'] # replace character in plate no with corresponding character in corresponding cypher
+                    result_list.append(chrlist)
             for r in result_list:
                 output = output + ''.join(r) + '\n'
             self.output.setText(output)
