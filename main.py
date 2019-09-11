@@ -16,7 +16,7 @@ from tkinter import messagebox
 #         base_path = sys._MEI14482
 #     except Exception:
 #         base_path = os.path.abspath(".")
-
+#
 #     return os.path.join(base_path, relative_path)
 
 qtCreatorFile = "gui.ui" # Enter xml file here.
@@ -33,14 +33,14 @@ def cypher():
             cyphers[i] = cyphers[i].sort_values('Values')
             cyphers[i] = cyphers[i].reset_index(drop=True)
 
+        with open("cyphers.bin", "wb") as output:
+            pickle.dump(cyphers, output)
+
 try:
     with open("cyphers.bin", "rb") as data:
         cyphers = pickle.load(data)
 except FileNotFoundError:
     cypher()
-
-    with open("cyphers.bin", "wb") as output:
-        pickle.dump(cyphers, output)
 
 parent = tkinter.Tk()
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
