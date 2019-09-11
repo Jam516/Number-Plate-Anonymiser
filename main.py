@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import tkinter
 import pickle
+import pyperclip
 from PyQt5 import QtWidgets, uic
 from tkinter import messagebox
 
@@ -84,6 +85,8 @@ class Ui(QtWidgets.QDialog):
             for r in result_list:
                 output = output + ''.join(r) + '\n'
             self.output.setText(output)
+            pyperclip.copy(output)
+            info = messagebox.showinfo('Encrypted', 'Copied to clipboard', parent=parent)
         except IndexError:
             self.output.setText('Please enter a set of 7 character number plates without spaces e.g. \nBD51SMR \n6TGZ044 \nOR68ASM ')
 
