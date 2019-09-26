@@ -7,6 +7,8 @@ import pyperclip
 from PyQt5 import QtWidgets, uic
 from tkinter import messagebox
 
+import exe_fix
+
 # ////////////////////////////////////////////////////////////////
 # Define function to import external files when using PyInstaller.
 # ////////////////////////////////////////////////////////////////
