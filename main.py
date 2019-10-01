@@ -1,3 +1,4 @@
+import os
 import sys
 import tkinter
 import pickle
@@ -6,10 +7,11 @@ from PyQt5 import QtWidgets, uic
 from tkinter import messagebox
 
 from cypher import NumberplateCypher
+from gui import Ui_Dialog
 import exe_fix
 
 
-qtCreatorFile = "gui.ui" # Enter xml file here.
+# qtCreatorFile = "gui.ui" # Enter xml file here.
 
 parent = tkinter.Tk()
 parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
@@ -21,7 +23,9 @@ class Ui(QtWidgets.QDialog):
 
         self.cypher = NumberplateCypher()
 
-        uic.loadUi('gui.ui', self)
+        # uic.loadUi(os.path.join(exe_fix.RESOURCE_PATH, 'gui.ui'), self)
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
 
         self.encrypt_button = self.findChild(QtWidgets.QPushButton, 'encrypt_button')
         self.encrypt_button.clicked.connect(self.encrypt) # Remember to pass the definition/method, not the return value!
