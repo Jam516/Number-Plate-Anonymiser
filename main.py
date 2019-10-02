@@ -1,21 +1,13 @@
-import os
-import sys
 import tkinter
-import pickle
+from tkinter import messagebox
+
 import pyperclip
 from PyQt5 import QtWidgets, uic
-from tkinter import messagebox
 
 from cypher import NumberplateCypher
 from gui import Ui_Dialog
 import exe_fix
 
-
-# qtCreatorFile = "gui.ui" # Enter xml file here.
-
-parent = tkinter.Tk()
-parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
-parent.withdraw() # Hide the window
 
 class Ui(QtWidgets.QDialog):
     def __init__(self):
@@ -23,7 +15,6 @@ class Ui(QtWidgets.QDialog):
 
         self.cypher = NumberplateCypher()
 
-        # uic.loadUi(os.path.join(exe_fix.RESOURCE_PATH, 'gui.ui'), self)
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
 
@@ -52,6 +43,12 @@ class Ui(QtWidgets.QDialog):
             self.output.setText('')
             self.input.setText('')
 
-app = QtWidgets.QApplication(sys.argv) # Create an instance of QtWidgets.QApplication
-window = Ui() # Create an instance of our class
-app.exec_() # Start the application
+
+if __name__ == '__main__':
+    parent = tkinter.Tk()
+    parent.overrideredirect(1) # Avoid it appearing and then disappearing quickly
+    parent.withdraw() # Hide the window
+
+    app = QtWidgets.QApplication([]) # Create an instance of QtWidgets.QApplication
+    window = Ui() # Create an instance of our class
+    app.exec_() # Start the application
