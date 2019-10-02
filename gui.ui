@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Number Plate Cypher</string>
+   <string>Number Plate Anonymiser</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">

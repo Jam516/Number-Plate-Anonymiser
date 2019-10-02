@@ -35,7 +35,7 @@ class Ui_Dialog(object):
 
     def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Dialog.setWindowTitle(_translate("Dialog", "Number Plate Cypher"))
+        Dialog.setWindowTitle(_translate("Dialog", "Number Plate Anonymiser"))
         self.label.setText(_translate("Dialog", "Encrypted Plate Numbers"))
         self.encrypt_button.setText(_translate("Dialog", "Encrypt"))
         self.refresh_button.setText(_translate("Dialog", "Refresh Cypher"))
