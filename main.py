@@ -26,6 +26,7 @@ class Ui(QtWidgets.QDialog):
         self.input = self.findChild(QtWidgets.QTextEdit, 'plate_no_box')
 
         self.output = self.findChild(QtWidgets.QTextEdit, 'results_window')
+        self.output.setReadOnly(True)
 
         self.show() # Show the GUI
 
