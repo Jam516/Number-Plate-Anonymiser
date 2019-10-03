@@ -4,6 +4,7 @@ from tkinter import messagebox
 import pyperclip
 from PyQt5 import QtWidgets, uic
 
+from __version__ import __version__
 from cypher import NumberplateCypher
 from gui import Ui_Dialog
 import exe_fix
@@ -17,6 +18,7 @@ class Ui(QtWidgets.QDialog):
 
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
+        self.setWindowTitle(f'Number Plate Anonymiser v{__version__}')
 
         self.encrypt_button = self.findChild(QtWidgets.QPushButton, 'encrypt_button')
         self.encrypt_button.clicked.connect(self.encrypt) # Remember to pass the definition/method, not the return value!
