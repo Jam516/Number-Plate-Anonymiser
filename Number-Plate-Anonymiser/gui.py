@@ -37,6 +37,11 @@ class Ui_Dialog(object):
         self.copy_button = QtWidgets.QPushButton(Dialog)
         self.copy_button.setGeometry(QtCore.QRect(520, 530, 111, 31))
         self.copy_button.setObjectName("copy_button")
+        self.label_3 = QtWidgets.QLabel(Dialog)
+        self.label_3.setGeometry(QtCore.QRect(680, 20, 51, 20))
+        self.label_3.setAlignment(QtCore.Qt.AlignRight|QtCore.Qt.AlignTop|QtCore.Qt.AlignTrailing)
+        self.label_3.setOpenExternalLinks(True)
+        self.label_3.setObjectName("label_3")
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)
@@ -49,6 +54,7 @@ class Ui_Dialog(object):
         self.refresh_button.setText(_translate("Dialog", "Refresh Cypher"))
         self.label_2.setText(_translate("Dialog", "Input"))
         self.copy_button.setText(_translate("Dialog", "Copy Results"))
+        self.label_3.setText(_translate("Dialog", "<a href=\"https://github.com/TransportScotland/Number-Plate-Anonymiser/blob/master/README.md\">Help</a>"))
 
 
 if __name__ == "__main__":
