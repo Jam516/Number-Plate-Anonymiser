@@ -25,6 +25,9 @@ class Ui(QtWidgets.QDialog):
         self.refresh_button = self.findChild(QtWidgets.QPushButton, 'refresh_button')
         self.refresh_button.clicked.connect(self.refresh)
 
+        self.refresh_button = self.findChild(QtWidgets.QPushButton, 'copy_button')
+        self.refresh_button.clicked.connect(self.copy_output)
+
         self.input = self.findChild(QtWidgets.QTextEdit, 'plate_no_box')
 
         self.output = self.findChild(QtWidgets.QTextEdit, 'results_window')
@@ -36,8 +39,14 @@ class Ui(QtWidgets.QDialog):
         plates = self.input.toPlainText().splitlines()
         anonymised = '\n'.join([self.cypher.anonymise(plate) for plate in plates])
         self.output.setText(anonymised)
-        pyperclip.copy(anonymised)
-        info = messagebox.showinfo('Encrypted', 'Copied to clipboard', parent=parent)
+        self.copy_output()
+
+    def copy_output(self):
+        pyperclip.copy(self.output.toPlainText())
+        messagebox.showinfo(
+            'Copy complete!', 'Output copied to clipboard', parent=parent
+        )
+
 
     def refresh(self):
         okcancel = messagebox.askokcancel('Refresh Cypher', 'Are you sure you want to refresh the cypher?', parent=parent) # OK / Cancel
