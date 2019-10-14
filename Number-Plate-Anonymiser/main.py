@@ -4,7 +4,7 @@ from tkinter import messagebox
 import pyperclip
 from PyQt5 import QtWidgets, uic
 
-from __version__ import __version__
+from _version import __version__
 from cypher import NumberplateCypher
 from gui import Ui_Dialog
 import exe_fix
