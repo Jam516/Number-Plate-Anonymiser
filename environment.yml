@@ -1,0 +1,28 @@
+name: nplates
+channels:
+  - trung
+  - defaults
+  - conda-forge
+dependencies:
+  - certifi=2019.6.16=py36_1
+  - pip=19.2.2=py36_0
+  - python=3.6.9=h5500b2f_0
+  - setuptools=41.0.1=py36_0
+  - sqlite=3.29.0=he774522_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.16.27012=hf0eaf9b_0
+  - wheel=0.33.4=py36_0
+  - wincertstore=0.2=py36h7fe50ca_0
+  - pip:
+    - altgraph==0.16.1
+    - click==7.0
+    - future==0.17.1
+    - pefile==2019.4.18
+    - pyinstaller==3.5
+    - pyperclip==1.7.0
+    - pyqt5==5.13.0
+    - pyqt5-sip==4.19.19
+    - pyqt5-tools==5.13.0.1.5
+    - python-dotenv==0.10.3
+    - pywin32-ctypes==0.2.0
+
