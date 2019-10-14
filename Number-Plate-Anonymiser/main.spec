@@ -1,4 +1,14 @@
 # -*- mode: python ; coding: utf-8 -*-
+import re
+
+# Idea from https://stackoverflow.com/a/7071358
+with open('_version.py', 'r') as f:
+    version_regex = r"^__version__ = ['\"]([^'\"]*)['\"]"
+    mo = re.search(version_regex, f.read(), re.M)
+    if mo:
+        ver_str = mo.group(1)
+    else:
+        raise RuntimeError('Unable to find version string.')
 
 block_cipher = None
 
@@ -22,7 +32,7 @@ exe = EXE(pyz,
           a.zipfiles,
           a.datas,
           [],
-          name='Number Plate Anonymiser',
+          name=f'Number Plate Anonymiser v{ver_str}',
           debug=False,
           bootloader_ignore_signals=False,
           strip=False,
