@@ -8,13 +8,14 @@ install:
   - pip install -r requirements.txt
 script:
   - pytest
-on_success:
-  script: pyinstaller "Number-Plate-Anonymiser/main.spec"
+before_deploy:
+  - pyinstaller "Number-Plate-Anonymiser/main.spec"
 deploy:
   provider: releases
   api_key: $RELEASE_TOKEN
   file_glob: true
-  file: "dist/*.exe"
+  file: "*/dist/*.exe"
   skip_cleanup: true
+  draft: true
   on:
     tags: true
