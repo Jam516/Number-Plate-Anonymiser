@@ -15,7 +15,7 @@ deploy:
   provider: releases
   api_key: $RELEASE_TOKEN
   file_glob: true
-  file: "C:/Users/travis/build/TransportScotland/Number-Plate-Anonymiser/dist/Number Plate Anonymiser*.exe"
+  file: dist/Number Plate Anonymiser*.exe
   skip_cleanup: true
   draft: true
   on:
