@@ -8,10 +8,11 @@ install:
   - pip install -r requirements.txt
 script:
   - pytest
-deploy:
+on_success:
   script: pyinstaller "Number-Plate-Anonymiser/main.spec"
+deploy:
   provider: releases
-  api_key: "GITHUB OAUTH TOKEN"
+  api_key: $RELEASE_TOKEN
   file_glob: true
   file: "dist/*.exe"
   skip_cleanup: true
