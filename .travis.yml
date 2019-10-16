@@ -1,0 +1,20 @@
+os: windows
+language: python
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.7"
+install:
+  - pip install -r requirements.txt
+script:
+  - pytest
+deploy:
+  script: pyinstaller "Number-Plate-Anonymiser/main.spec"
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file_glob: true
+  file: "dist/*.exe"
+  skip_cleanup: true
+  on:
+    tags: true
