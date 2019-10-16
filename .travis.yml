@@ -1,6 +1,7 @@
 os: windows
 language: shell
 before_install:
+  - bash -c 'echo $TRAVIS_BUILD_DIR'
   - choco install python --version=3.7.2
   - python -m pip install --upgrade pip
 env: PATH=/c/Python37:/c/Python37/Scripts:$PATH
@@ -14,7 +15,7 @@ deploy:
   provider: releases
   api_key: $RELEASE_TOKEN
   file_glob: true
-  file: "**/dist/*.exe"
+  file: "C:\Users\travis\build\TransportScotland\Number-Plate-Anonymiser\dist\Number Plate Anonymiser*.exe"
   skip_cleanup: true
   draft: true
   on:
