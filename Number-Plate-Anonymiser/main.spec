@@ -1,8 +1,11 @@
 # -*- mode: python ; coding: utf-8 -*-
+import os
 import re
 
+specpath = os.path.dirname(os.path.abspath(SPEC))
+
 # Idea from https://stackoverflow.com/a/7071358
-with open('_version.py', 'r') as f:
+with open(os.path.join(specpath, '_version.py'), 'r') as f:
     version_regex = r"^__version__ = ['\"]([^'\"]*)['\"]"
     mo = re.search(version_regex, f.read(), re.M)
     if mo:
