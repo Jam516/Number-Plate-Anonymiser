@@ -2,7 +2,7 @@ from cypher import NumberplateCypher
 
 
 class TestNumberplateCypher:
-    plate = 'P584PVT'
+    plate = "P584PVT"
     cypher = NumberplateCypher()
 
     def test_anonymisation(self):

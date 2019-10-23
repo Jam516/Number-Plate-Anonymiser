@@ -1,12 +1,13 @@
 from random import SystemRandom
 
 # Valid numberplate characters - A-Z, 1-9
-VALID_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+VALID_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 
 
 class NumberplateCypher:
     """A cypher to anonymise numberplates.
     """
+
     def __init__(self):
         """Initialises the cypher, including the set-up of character lookups.
         """
@@ -38,16 +39,16 @@ class NumberplateCypher:
         :return: the anonymised numberplate (contains no spaces)
         :rtype: str
         """
-        no_spaces = plate.upper().replace(' ', '')
+        no_spaces = plate.upper().replace(" ", "")
         new_plate = []
         for i, c in enumerate(no_spaces[:7]):
             if c in VALID_CHARS:
                 char_index = VALID_CHARS.index(c)
                 new_plate.append(self._cyphers[i][char_index])
-        return ''.join(new_plate)
+        return "".join(new_plate)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     nc = NumberplateCypher()
-    print(nc.anonymise('P584 PVT'))
+    print(nc.anonymise("P584 PVT"))
     help(NumberplateCypher)

@@ -3,7 +3,7 @@ import sys
 
 # Basic idea taken from https://stackoverflow.com/a/56962128
 
-if getattr(sys, 'frozen', False):
+if getattr(sys, "frozen", False):
     pathlist = []
 
     # If the application is run as a bundle, the pyInstaller bootloader
