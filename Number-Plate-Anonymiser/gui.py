@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'gui.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.13.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -20,10 +20,10 @@ class Ui_Dialog(object):
             QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignTop
         )
         self.label.setObjectName("label")
-        self.results_window = QtWidgets.QTextEdit(Dialog)
+        self.results_window = QtWidgets.QPlainTextEdit(Dialog)
         self.results_window.setGeometry(QtCore.QRect(420, 40, 311, 471))
         self.results_window.setObjectName("results_window")
-        self.plate_no_box = QtWidgets.QTextEdit(Dialog)
+        self.plate_no_box = QtWidgets.QPlainTextEdit(Dialog)
         self.plate_no_box.setGeometry(QtCore.QRect(20, 40, 381, 471))
         self.plate_no_box.setObjectName("plate_no_box")
         self.encrypt_button = QtWidgets.QPushButton(Dialog)

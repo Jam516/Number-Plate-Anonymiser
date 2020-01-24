@@ -29,7 +29,7 @@
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
    </property>
   </widget>
-  <widget class="QTextEdit" name="results_window">
+  <widget class="QPlainTextEdit" name="results_window">
    <property name="geometry">
     <rect>
      <x>420</x>
@@ -39,7 +39,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTextEdit" name="plate_no_box">
+  <widget class="QPlainTextEdit" name="plate_no_box">
    <property name="geometry">
     <rect>
      <x>20</x>

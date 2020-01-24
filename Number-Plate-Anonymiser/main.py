@@ -30,9 +30,9 @@ class Ui(QtWidgets.QDialog):
         self.refresh_button = self.findChild(QtWidgets.QPushButton, "copy_button")
         self.refresh_button.clicked.connect(self.copy_output)
 
-        self.input = self.findChild(QtWidgets.QTextEdit, "plate_no_box")
+        self.input = self.findChild(QtWidgets.QPlainTextEdit, "plate_no_box")
 
-        self.output = self.findChild(QtWidgets.QTextEdit, "results_window")
+        self.output = self.findChild(QtWidgets.QPlainTextEdit, "results_window")
         self.output.setReadOnly(True)
 
         self.show()  # Show the GUI
@@ -40,7 +40,8 @@ class Ui(QtWidgets.QDialog):
     def encrypt(self):
         plates = self.input.toPlainText().splitlines()
         anonymised = "\n".join([self.cypher.anonymise(plate) for plate in plates])
-        self.output.setText(anonymised)
+        self.output.clear()
+        self.output.insertPlainText(anonymised)
         self.copy_output()
 
     def copy_output(self):
